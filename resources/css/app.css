@@ -1,64 +1,25 @@
-/*
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
 
-*/
+@import 'bootstrap/dist/css/bootstrap.min.css';
 
-.flex-container{
-    display: flex;
-    flex-flow: row wrap; /* es una abreviacion de flex direction y flex wrap */
-    justify-content: space-between;
-    align-items: center;
-    width: auto;
-    height: auto;
+body {
+    font-family: Arial, sans-serif; /* Cambia "Arial" por la fuente que desees utilizar */
 }
 
-#headerNav{
-    background-image: linear-gradient(to bottom right,rgba(0,153,0,0.8),rgba(0,153,0,0.2));
+header {
+    background-color: #4B0082; /* Color púrpura */
 }
 
-#footerNav{
-    background-color: rgba(0,153, 0, 0.5);
+footer {
+    background-color: #2E0854; /* Color púrpura oscuro */
+    position: fixed;
+    bottom: 0;
+    width: 100%;   
+    font-size:12px;
 }
 
-.button{
-    background-color:white;
-    border: 1px solid black;
-    color:black;
-    padding: 10px 10px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 0.9rem;
-    font-weight: bolder;
-    border-radius: 12px;
-    transition-duration: 0.4s;
-    cursor: pointer;
-}
+.nueva-vibe{
 
-.button:hover{
-    background-color: rgba(255,255,0,0.3)
 }
-
-.lista{
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-}
-.item{
-    display: inline;
-}
-
-img{
-    width: 6rem;
-    height:6rem;
-    margin: 0;
-    padding: 0;
-    border-radius: 50%;
-}
-
-
 
 
