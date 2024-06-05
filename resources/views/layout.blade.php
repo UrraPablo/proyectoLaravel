@@ -6,7 +6,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="{{ mix('css/app.css') }}" rel="stylesheet">
     <title>@yield('title')</title> <!-- Contenido variable para cada pagina  -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
@@ -19,8 +18,9 @@
                 <li class="nav-item">
                     <a href="#" class="nav-link text-white" data-bs-toggle="offcanvas" data-bs-target="#offcanvasCategorias" aria-controls="offcanvasCategorias">Categorías</a>
                 </li>
-                <li>
+                <li><a href="/">
                     <img src="{{ asset('images/vibepointlogo.png') }}" alt="VibePoint logo" width="150">
+                    </a>
                 </li>
                 <li class="nav-item d-flex align-items-center">
                     <a class="nav-link text-white" href="#">Mi perfil</a>
@@ -60,7 +60,7 @@
     <div class="offcanvas offcanvas-start text-white" style="width:300px" tabindex="-1" id="offcanvasCategorias" aria-labelledby="offcanvasCategoriasLabel">
         <div class="offcanvas-header">
             <h5 class="offcanvas-title h4" id="offcanvasCategoriasLabel">Categorías</h5>
-            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            <button type="button" class="btn-close text-reset text-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div class="offcanvas-body p-0 ">
             <ul class="list-group list-group-flush">
