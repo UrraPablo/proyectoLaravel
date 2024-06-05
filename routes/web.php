@@ -23,16 +23,5 @@ Route::get('logout', function () {
     return '<h1>logout usuario</h1>';
 });
 
-// forma para enlazar la ruta con el controlador de la clase category 
-Route::get('category',[CategoryController::class,'getIndex']);
-
-/** EJEMPLO DE AGRUPAMIENTO DE METODOS DE UN MISMO CONTROLLER */
-
-// Route::get('category/show/{id}',[CategoryController::class,'getShow']);
-// Route::get('category/create',[CategoryController::class,'getCreate']);
-// Route::get('category/edit/{id}',[CategoryController::class,'getEdit']);
-Route::controller(CategoryController::class)->group(function(){
-    Route::get('category/create','getCreate');
-    Route::get('category/show/{id}','getShow');
-    Route::get('category/edit/{id}','getEdit');
-});
+Route::get('category', [CategoryController::class, 'index'])->name('category.index');
+Route::get('category/{category}', [CategoryController::class, 'show'])->name('category.show');

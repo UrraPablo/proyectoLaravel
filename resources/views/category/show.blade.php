@@ -1,8 +1,31 @@
 @extends('layout') <!-- hace referencia a la plantilla estandar -->
-@section('title','Show') <!-- asignacion dinamica del titulo segun la pagina en particular -->
+@section('title', 'VibePoint | '.$category->name) <!-- asignacion dinamica del titulo segun la pagina en particular -->
 
 @section('contenido')
-   <!-- asignacion dinamica del contenido segun la pagina en particular -->
-    <h1>Vista detalle del post {{$id}}</h1>
+<div class="container mt-4">
+    <h2>{{ $category->name }}</h2>
+    <div class="row">
+        @foreach($posts as $post)
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-header">
+                    <!-- Nombre del autor -->
+                    <h6 class="card-author">{{ $post->author->name }}</h6>
+                    <!-- Fecha de creación -->
+                    <p class="card-date">{{ $post->created_at->format('d M, Y') }}</p>
+                </div>
+                <div class="card-body">
+                    <!-- Título del post -->
+                    <h5 class="card-title">{{ $post->title }}</h5>
+                    <!-- Contenido del post -->
+                    <p class="card-text">{{ $post->content }}</p>
+                    <!-- Puedes agregar más detalles del post aquí -->
+                </div>
+            </div>
+        </div>
+        @endforeach
+    </div>
+</div>
+
 
 @endsection
