@@ -23,9 +23,14 @@
                     </a>
                 </li>
                 <li class="nav-item d-flex align-items-center">
+                @guest
+                    <a class="nav-link text-white" href="{{ route('login') }}">Login</a>
+                    <a class="nav-link text-white" href="{{ route('register') }}">Register</a>
+                @else
                     <a class="nav-link text-white" href="#">Mi perfil</a>
                     <img src="{{ asset('images/fotoperfil.jpeg') }}" class="rounded-circle ml-3" alt="Foto de perfil" width="40" height="40">
-                </li>
+                @endguest
+            </li>
             </ul>
         </nav>
     </header>

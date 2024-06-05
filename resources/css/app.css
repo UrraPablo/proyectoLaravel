@@ -59,32 +59,34 @@ footer {
 }
 
 /* Resto de estilos de la tarjeta (ya definidos en el ejemplo anterior) */
-.card {
+.card-post {
     border: 1px solid #ddd;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
 }
 
-.card:hover {
+.card-post:hover {
     transform: translateY(-5px);
 }
 
-.card-title {
+.card-post-title {
     font-size: 1.25rem;
     margin-bottom: 0.5rem;
 }
 
-.card-text {
+.card-post-text {
     font-size: 1rem;
 }
 
-.card:focus {
+.card-post:focus {
     outline: none;
 }
 
 .nueva-vibe{
 
 }
+
+
 
 
