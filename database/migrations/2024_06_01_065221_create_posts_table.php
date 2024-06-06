@@ -12,15 +12,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('posts', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('author_id')->constrained('users');
-            $table->foreignId('category_id')->constrained('categories');
-            $table->string('title');
-            $table->text('content');
-            $table->boolean('habilitated')->default(false);
-            $table->timestamps();
-        });
+        if(!Schema::hasTable('posts')){
+            Schema::create('posts', function (Blueprint $table) {
+                $table->id();
+                $table->foreignId('author_id')->constrained('users')->onDelete('cascade')->onUpdate('cascade');
+                $table->foreignId('category_id')->constrained('categories')->onDelete('cascade')->onUpdate('cascade');
+                $table->string('title');
+                $table->text('content');
+                $table->boolean('habilitated')->default(false);
+                $table->timestamps();
+            });
+        }
     }
 
     /**

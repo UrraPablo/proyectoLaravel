@@ -14,6 +14,8 @@ class PostFactory extends Factory
      *
      * @return array<string, mixed>
      */
+    protected $model=Post::class;
+    
     public function definition(): array
     {
         // Obtener el usuario con ID 1
