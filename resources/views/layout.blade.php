@@ -33,7 +33,7 @@
                         
                     <a class="nav-link text-white" href="{{ route('login') }}">Login</a>
                         <!-- aca va el <a> del login  -->
-                    <a class="nav-link text-white" href="{{ route('register') }}">Regisrarse</a>
+                    <a class="nav-link text-white" href="{{ route('register') }}">Registrarse</a>
                     @endguest
                     
             </li>
