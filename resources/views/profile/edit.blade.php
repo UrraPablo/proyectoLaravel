@@ -1,5 +1,5 @@
-@extends('layout');
-@section('title','Editar Informacion');
+@extends('layout')
+@section('title','Editar Informacion')
 
 @section('contenido')
     <div class='container'>
