@@ -5,10 +5,11 @@
      <!-- asignacion dinamica del contenido segun la pagina en particular -->
     <h1>Listado de categorias</h1>
     <ul>
-        <li>Lista 1</li>
-        <li>Lista 2</li>
-        <li>Lista 3</li>
-        <li>Lista 4</li>
+       @foreach ($category  as $item)
+        <li>
+            <a href="{{route('category.show',$item->id)}}">{{$item->name()}}</a>
+        </li>
+       @endforeach
     </ul>
 
 @endsection

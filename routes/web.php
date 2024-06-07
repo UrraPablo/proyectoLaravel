@@ -17,7 +17,7 @@ use App\Http\Controllers\CategoryController;
 
 Route::get('/', function () {
     return view('home');
-});
+})->name('home');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -29,14 +29,18 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('login', function () {
-    return '<h1>login usuario</h1>';
-});
-Route::get('logout', function () {
-    return '<h1>logout usuario</h1>';
-});
+// Route::get('register',function(){
+//     return '<h1>Registro de usuario</h1>';
+// });
+
+// Route::get('login', function () {
+//     return '<h1>login usuario</h1>';
+// });
+// Route::get('logout', function () {
+//     return '<h1>logout usuario</h1>';
+// });
 
 Route::get('category', [CategoryController::class, 'index'])->name('category.index');
-Route::get('category/{category}', [CategoryController::class, 'show'])->name('category.show');
+Route::get('category/{id}', [CategoryController::class, 'show'])->name('category.show');
 
 require __DIR__.'/auth.php';

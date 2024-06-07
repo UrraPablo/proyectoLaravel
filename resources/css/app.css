@@ -83,10 +83,52 @@ footer {
     outline: none;
 }
 
-.nueva-vibe{
+/*diseño del formulario de actualizacion de datos del usuario*/
+.campoFormulario{
+    padding: 5px;
+    margin: 5px;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+/*diseño del formulario de registro del usuario*/
+.campoRegistro{
+    padding: 5px;
+    margin: 5px;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+/*diseño del boton de registro*/
+.butonRegistro{
+    background-color:#4B0082;
+    color: aliceblue;
+    font-weight: bolder;
+    margin-top: 15px;
+}
+
+.headerLogin{
+    background-color:#4B0082;
+    color:#ddd;
+    margin: 0;
+    font-family: 'Times New Roman', Times, serif;
+    font-size:2rem;
+}
+.btnlogin{
+    background-color: #4B0082;
+    color: #f8f9fa;
+    font-weight: bolder;
+    font-size:large;
 
 }
 
+.logout{
+    background-color: #4B0082;
+    color:#f8f9fa;
+    border:#2E0854;
+}
 
 
 

@@ -1,29 +1,43 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Profile') }}
-        </h2>
-    </x-slot>
+@extends('layout');
+@section('title','Editar Informacion');
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
-            <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-                <div class="max-w-xl">
-                    @include('profile.partials.update-profile-information-form')
-                </div>
-            </div>
+@section('contenido')
+    <div class='container'>
+        <h1>Informacion de usuario</h1>
+        
+         <form action="{{route('profile.update',$user)}}" method="post">
+            @csrf
+             <div class="campoFormulario">
+                 <label for="Nombre">
+                    Nombre: <br>
+                     <input type="text" name="name" id="name" value="{{$user->name}}">
+                 </label>
+             </div>
+             <div class="campoFormulario">
+                 <label for="Email">
+                    Email: <br>
+                    <input type="email" name="email" id="email" value="{{$user->email}}">
+                </label>
 
-            <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-                <div class="max-w-xl">
-                    @include('profile.partials.update-password-form')
-                </div>
-            </div>
+             </div>
+             <div class="campoFormulario">
+                 <label for="Password">
+                     Password: <br>
+                     <input type="password" name="password" id="password" value="{{$user->password}}">
+                 </label>
 
-            <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-                <div class="max-w-xl">
-                    @include('profile.partials.delete-user-form')
-                </div>
+             </div>
+             <div class="campoFormulario">
+                 <label for="Confirmar Password">
+                     Confirmar Password  <br>
+                     <input type="password" name="" id="" value="{{$user->password}}">
+                 </label>             
+
+             </div>
+            <div>
+               <button type="submit">Actualizar datos</button>
             </div>
-        </div>
+         </form>
+
     </div>
-</x-app-layout>
+@endsection

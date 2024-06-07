@@ -6,7 +6,7 @@
         <div class="row justify-content-center">
             <div class="col-md-6">
                 <div class="card shadow-lg">
-                    <div class="card-header bg-primary text-white">{{ __('Login') }}</div>
+                    <div class="headerLogin">{{ __('Login') }}</div>
                     <div class="card-body">
                         <form method="POST" action="{{ route('login') }}">
                             @csrf
@@ -42,8 +42,8 @@
                                     </a>
                                 @endif
 
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Log in') }}
+                                <button type="submit" class="btnlogin">
+                                    {{ __('Ingresar') }}
                                 </button>
                             </div>
                         </form>

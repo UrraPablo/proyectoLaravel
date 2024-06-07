@@ -13,23 +13,29 @@
 <body>
     <!-- Header -->
     <header class="text-white p-3 py-2 px-3">
+        
         <nav>
             <ul class="nav d-flex justify-content-between align-items-center">
                 <li class="nav-item">
                     <a href="#" class="nav-link text-white" data-bs-toggle="offcanvas" data-bs-target="#offcanvasCategorias" aria-controls="offcanvasCategorias">Categorías</a>
                 </li>
-                <li><a href="/">
+                <li><a href="{{route('home')}}">
                     <img src="{{ asset('images/vibepointlogo.png') }}" alt="VibePoint logo" width="150">
                     </a>
                 </li>
                 <li class="nav-item d-flex align-items-center">
-                @guest
+                    @auth
+                    <a class="nav-link text-white" href="{{ route('profile.edit') }}">Mi Perfil</a>
+                    <a class="nav-link text-white"> <form action="{{route('logout')}}" method="post">@csrf<button class="logout" type="submit">Logout</button></form></a>
+                        
+                    @endauth
+                    @guest
+                        
                     <a class="nav-link text-white" href="{{ route('login') }}">Login</a>
-                    <a class="nav-link text-white" href="{{ route('register') }}">Register</a>
-                @else
-                    <a class="nav-link text-white" href="#">Mi perfil</a>
-                    <img src="{{ asset('images/fotoperfil.jpeg') }}" class="rounded-circle ml-3" alt="Foto de perfil" width="40" height="40">
-                @endguest
+                        <!-- aca va el <a> del login  -->
+                    <a class="nav-link text-white" href="{{ route('register') }}">Regisrarse</a>
+                    @endguest
+                    
             </li>
             </ul>
         </nav>
