@@ -4,6 +4,8 @@
 @section('contenido')
 <div class="container mt-4">
     <h2>{{ $category->name }}</h2>
+    <button class="btn btn-primary mb-3 fs-6">Nueva Vibe</button>
+
     <div class="row">
         @foreach($posts as $post)
         <div class="col-md-4 mb-4">

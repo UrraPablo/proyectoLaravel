@@ -40,7 +40,10 @@ Route::middleware('auth')->group(function () {
 //     return '<h1>logout usuario</h1>';
 // });
 
-Route::get('category', [CategoryController::class, 'index'])->name('category.index');
 Route::get('category/{id}', [CategoryController::class, 'show'])->name('category.show');
+
+Route::get('post/create', [CategoryController::class, 'create'])->name('post.create');
+Route::get('post/{id}', [CategoryController::class, 'show'])->name('post.show');
+Route::get('post/edit/{id}', [CategoryController::class, 'edit'])->name('post.edit');
 
 require __DIR__.'/auth.php';
