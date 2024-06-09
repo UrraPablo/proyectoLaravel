@@ -9,13 +9,14 @@ use Illuminate\Support\Facades\Validator;
 
 class PostController extends Controller
 {
-    // Método para mostrar todos los posts
+    // Mostrar todos los posts
     public function index()
     {
         $posts = Post::all();
         return view('post.index', ['posts' => $posts]);
     }
 
+    // Mostrar un post específico en una categoría
     public function showPostInCategory($categoryId, $postId)
     {
         $category = Category::findOrFail($categoryId);
@@ -25,41 +26,45 @@ class PostController extends Controller
         return view('post.show', compact('category', 'highlightedPost', 'posts'));
     }
 
-    // Método para mostrar el formulario de creación de un nuevo post
+    // Mostrar el formulario de creación de un nuevo post
     public function create()
     {
         $categories = Category::all();
         return view('post.create', ['categories' => $categories]);
     }
 
-    // Método para almacenar un nuevo post
+    // Almacenar un nuevo post
     public function store(Request $request)
     {
-        // Validar los datos del formulario
         $validator = Validator::make($request->all(), [
             'title' => 'required|string|max:255',
             'content' => 'required|string',
+            'imagen' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'category_id' => 'required|exists:categories,id',
         ]);
 
-        // Si la validación falla, redirigir de vuelta con los errores
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
-        // Crear un nuevo post
         $post = new Post();
         $post->title = $request->input('title');
         $post->content = $request->input('content');
         $post->category_id = $request->input('category_id');
-        $post->author_id = auth()->user()->id;
+        $post->author_id = auth()->id();
+
+        if ($request->hasFile('imagen')) {
+            $image = $request->file('imagen');
+            $imagePath = $image->store('images', 'public');
+            $post->imagen = $imagePath;
+        }
+
         $post->save();
 
-        // Redirigir a la página del nuevo post
-        return redirect()->route('category.post.show', ['category' => $post->category_id ,'post' => $post->id]);
+        return redirect()->route('category.post.show', ['category' => $post->category_id, 'post' => $post->id]);
     }
 
-    // Método para mostrar el formulario de edición de un post específico
+    // Mostrar el formulario de edición de un post específico
     public function edit($id)
     {
         $post = Post::findOrFail($id);
@@ -67,7 +72,7 @@ class PostController extends Controller
         return view('post.edit', ['post' => $post, 'categories' => $categories]);
     }
 
-    // Método para actualizar un post existente
+    // Actualizar un post existente
     public function update(Request $request, $id)
     {
         // Buscar el post a actualizar
@@ -77,6 +82,7 @@ class PostController extends Controller
         $validator = Validator::make($request->all(), [
             'title' => 'required|string|max:255',
             'content' => 'required|string',
+            'imagen' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'category_id' => 'required|exists:categories,id',
         ]);
 
@@ -89,13 +95,19 @@ class PostController extends Controller
         $post->title = $request->input('title');
         $post->content = $request->input('content');
         $post->category_id = $request->input('category_id');
+
+        if ($request->hasFile('imagen')) {
+            $image = $request->file('imagen');
+            $imagePath = $image->store('images', 'public');
+            $post->imagen = $imagePath;
+        }
+
         $post->save();
 
-        // Redirigir a la página del post actualizado
-        return redirect()->route('post.show', ['id' => $post->id]);
+        return redirect()->route('category.post.show', ['category' => $post->category_id, 'post' => $post->id]);
     }
 
-    // Método para eliminar un post específico
+    // Eliminar un post específico
     public function destroy($id)
     {
         // Buscar el post a eliminar
@@ -108,6 +120,7 @@ class PostController extends Controller
         return redirect()->route('posts.index');
     }
 
+    // Buscar posts
     public function search(Request $request)
     {
         $query = $request->input('query');

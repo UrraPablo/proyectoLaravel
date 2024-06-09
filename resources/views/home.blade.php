@@ -2,12 +2,12 @@
 @section('title','VibePoint') <!-- asignacion dinamica del titulo segun la pagina en particular -->
 
 @section('contenido')
-   
+
 <div class="row">
     <!-- Enlace que redirige a la página de creación de posts -->
     <a href="{{ route('post.create') }}" class="btn btnlogin mb-3">Nueva Vibe</a>
-        @foreach($posts as $post)
-        <div class="col-md-4 mb-4">
+    @foreach($posts as $post)
+    <div class="col-md-4 mb-4">
         <a href="{{ route('category.post.show', ['category' => $post->category->id, 'post' => $post->id]) }}" class="card-home">
             <div class="card card-post card-home">
                 <div class="card-header card-post-header">
@@ -20,14 +20,16 @@
                 <div class="card-body card-post-body">
                     <!-- Título del post -->
                     <h5 class="card-title card-post-title">{{ $post->title }}</h5>
+                    <!-- Imagen del post -->
+                    @if($post->imagen)
+                    <img src="{{ asset('storage/' . $post->imagen) }}" class="img-fluid card-img-top mb-3" alt="Imagen del post">
+                    @endif
                     <!-- Contenido del post -->
-                    <p class="card-text card-post-text">{{ $post->content }}</p>
-                    <!-- Puedes agregar más detalles del post aquí -->
+                    <p class="card-text card-post-text">{{ Str::limit($post->content, 150, '...') }}</p>
                 </div>
-            </div></a>
-        </div>
-        @endforeach
+            </div>
+        </a>
     </div>
+    @endforeach
+</div>
 @endsection
-    
-
