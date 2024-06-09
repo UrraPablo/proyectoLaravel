@@ -1,10 +1,10 @@
-@extends('layout') <!-- hace referencia a la plantilla estandar -->
-@section('title', 'VibePoint | '.$category->name) <!-- asignacion dinamica del titulo segun la pagina en particular -->
+@extends('layout')
+
+@section('title', 'VibePoint | ' . $category->name)
 
 @section('contenido')
 <div class="container mt-4">
     <h2>{{ $category->name }}</h2>
-    <!-- Enlace que redirige a la página de creación de posts -->
     <a href="{{ route('post.create') }}" class="btn btnlogin mb-3">Nueva Vibe</a>
 
     <div class="row">
@@ -12,23 +12,19 @@
         <div class="col-md-4 mb-4">
             <div class="card card-post">
                 <div class="card-header card-post-header">
-                    <!-- Nombre del autor -->
                     <h6 class="card-author">{{ $post->author->name }}</h6>
-                    <!-- Fecha de creación -->
                     <p class="card-date">{{ $post->created_at->format('d M, Y') }}</p>
                 </div>
                 <div class="card-body card-post-body">
-                    <!-- Título del post -->
                     <h5 class="card-title card-post-title">{{ $post->title }}</h5>
-                    <!-- Contenido del post -->
+                    @if($post->imagen)
+                    <img src="{{ asset('storage/' . $post->imagen) }}" class="card-img-top" alt="Imagen del post">
+                    @endif
                     <p class="card-text card-post-text">{{ $post->content }}</p>
-                    <!-- Puedes agregar más detalles del post aquí -->
                 </div>
             </div>
         </div>
         @endforeach
     </div>
 </div>
-
-
 @endsection

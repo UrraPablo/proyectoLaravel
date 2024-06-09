@@ -14,6 +14,10 @@
             </div>
             <div class="card-body card-post-body">
                 <h5 class="card-title card-post-title">{{ $highlightedPost->title }}</h5>
+                <!-- Imagen del post destacado -->
+                @if($highlightedPost->imagen)
+                <img src="{{ asset('storage/' . $highlightedPost->imagen) }}" class="img-fluid card-img-top mb-3" alt="Imagen del post">
+                @endif
                 <p class="card-text card-post-text">{{ $highlightedPost->content }}</p>
             </div>
         </div>
@@ -31,6 +35,10 @@
                     </div>
                     <div class="card-body card-post-body">
                         <h5 class="card-title card-post-title">{{ $post->title }}</h5>
+                        <!-- Imagen del post -->
+                        @if($post->imagen)
+                        <img src="{{ asset('storage/' . $post->imagen) }}" class="img-fluid card-img-top mb-3" alt="Imagen del post">
+                        @endif
                         <p class="card-text card-post-text">{{ $post->content }}</p>
                     </div>
                 </div>
@@ -39,5 +47,4 @@
         @endforeach
     </div>
 </div>
-
 @endsection

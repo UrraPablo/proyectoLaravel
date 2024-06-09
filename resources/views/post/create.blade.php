@@ -1,12 +1,12 @@
-@extends('layout') <!-- hace referencia a la plantilla estandar   -->
-@section('title','Nueva vibe') <!-- asignacion dinamica del titulo segun la pagina en particular -->
+@extends('layout') <!-- hace referencia a la plantilla estandar -->
+@section('title', 'Nueva vibe') <!-- asignacion dinamica del titulo segun la pagina en particular -->
 
 @section('contenido')
 <div class="container mt-4">
     <h1 class="mb-4">Añadir post</h1>
     
     <!-- Formulario para crear un nuevo post -->
-    <form action="{{ route('post.store') }}" method="POST">
+    <form action="{{ route('post.store') }}" method="POST" enctype="multipart/form-data">
         @csrf <!-- Token de seguridad para formularios en Laravel -->
 
         <div class="mb-3">
@@ -21,6 +21,14 @@
             <label for="content" class="form-label">Contenido:</label>
             <textarea class="form-control" id="content" name="content" rows="5" required>{{ old('content') }}</textarea>
             @error('content')
+                <div class="text-danger mt-2">{{ $message }}</div>
+            @enderror
+        </div>
+
+        <div class="mb-3">
+            <label for="imagen" class="form-label">Imagen:</label>
+            <input type="file" class="form-control" id="imagen" name="imagen">
+            @error('imagen')
                 <div class="text-danger mt-2">{{ $message }}</div>
             @enderror
         </div>
