@@ -56,7 +56,7 @@ class PostController extends Controller
         $post->save();
 
         // Redirigir a la página del nuevo post
-        return redirect()->route('post.show', ['id' => $post->id]);
+        return redirect()->route('category.post.show', ['category' => $post->category_id ,'post' => $post->id]);
     }
 
     // Método para mostrar el formulario de edición de un post específico

@@ -4,6 +4,8 @@
 @section('contenido')
    
 <div class="row">
+    <!-- Enlace que redirige a la página de creación de posts -->
+    <a href="{{ route('post.create') }}" class="btn btnlogin mb-3">Nueva Vibe</a>
         @foreach($posts as $post)
         <div class="col-md-4 mb-4">
         <a href="{{ route('category.post.show', ['category' => $post->category->id, 'post' => $post->id]) }}" class="card-home">

@@ -5,7 +5,7 @@
 <div class="container mt-4">
     <h2>{{ $category->name }}</h2>
     <!-- Enlace que redirige a la página de creación de posts -->
-    <a href="{{ route('post.create') }}" class="btn btnlogin">Nueva Vibe</a>
+    <a href="{{ route('post.create') }}" class="btn btnlogin mb-3">Nueva Vibe</a>
 
     <div class="row">
         @foreach($posts as $post)
