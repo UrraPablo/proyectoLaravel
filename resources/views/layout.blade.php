@@ -33,17 +33,9 @@
                 </li>
                 <li class="nav-item d-flex align-items-center">
                     @auth
-<<<<<<< HEAD
                     <a class="nav-link text-white" href="{{ route('profile.index') }}">Mi Perfil</a>
                     <a class="nav-link text-white"> <form action="{{route('logout')}}" method="post">@csrf<button class="logout" type="submit">Logout</button></form></a>
                         
-=======
-                    <a class="nav-link text-white" href="{{ route('profile.edit') }}">Mi Perfil</a>
-                    <a class="nav-link text-white">
-                        <form action="{{route('logout')}}" method="post">@csrf<button class="logout" type="submit">Cerrar sesión</button></form>
-                    </a>
-
->>>>>>> aae7b55c016d75115346002bf516bd1a38b97a03
                     @endauth
                     @guest
 

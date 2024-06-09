@@ -14,7 +14,7 @@
                     <!-- Nombre del autor -->
                     <h6 class="card-author">{{ $post->author->name }}</h6>
                     <!-- Fecha de creación -->
-                    <p class="card-date">{{ $post->created_at->format('d M, Y') }}</p>
+                    <p class="card-date">{{ $post->created_at }}</p>
                     <span class="card-category position-absolute top-0 end-0 p-1 m-2 fw-bold text-white">{{$post->category->name}}</span>
                 </div>
                 <div class="card-body card-post-body">

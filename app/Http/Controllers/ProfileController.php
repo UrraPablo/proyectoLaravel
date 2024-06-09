@@ -28,8 +28,8 @@ class ProfileController extends Controller
         $user=$request->user();
         $posts = Post::where('author_id',$user->id)->get();
         //$posts=Post::findOrfail($user->id);
-        var_dump($posts);
-        // pasos a seguir llamar a view y despues recorrer los posts para mostrarlo en la vista 
+        return view('profile.index',['user'=>$user,'posts'=>$posts]);
+         
     }
 
     /**
