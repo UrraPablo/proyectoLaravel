@@ -25,7 +25,7 @@
                 </li>
                 <li class="nav-item d-flex align-items-center">
                     @auth
-                    <a class="nav-link text-white" href="{{ route('profile.edit') }}">Mi Perfil</a>
+                    <a class="nav-link text-white" href="{{ route('profile.index') }}">Mi Perfil</a>
                     <a class="nav-link text-white"> <form action="{{route('logout')}}" method="post">@csrf<button class="logout" type="submit">Logout</button></form></a>
                         
                     @endauth

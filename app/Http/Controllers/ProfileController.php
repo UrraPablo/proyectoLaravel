@@ -8,7 +8,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
-use App\Models\User;
+use App\Models\Post;
+
 
 class ProfileController extends Controller
 {
@@ -22,17 +23,14 @@ class ProfileController extends Controller
         ]);
     }
 
-    /**
-     * 
-     */
-    public function store(Request $request){
-        
-
+    /** muestra los posts de un usuario dado */
+    public function postByUser(Request $request){
+        $user=$request->user();
+        $posts = Post::where('author_id',$user->id)->get();
+        //$posts=Post::findOrfail($user->id);
+        var_dump($posts);
+        // pasos a seguir llamar a view y despues recorrer los posts para mostrarlo en la vista 
     }
-    // public function editar(User $usuario){
-    //     return view('profile.edit',compact($usuario));
-
-    // }
 
     /**
      * Update the user's profile information.

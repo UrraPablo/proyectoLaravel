@@ -25,23 +25,14 @@ Route::get('/dashboard', function () {
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+   Route::get('/profile', [ProfileController::class, 'postByUser'])->name('profile.index');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-// Route::get('register',function(){
-//     return '<h1>Registro de usuario</h1>';
-// });
-
-// Route::get('login', function () {
-//     return '<h1>login usuario</h1>';
-// });
-// Route::get('logout', function () {
-//     return '<h1>logout usuario</h1>';
-// });
-
 Route::get('category/{id}', [CategoryController::class, 'show'])->name('category.show');
 
+//Route::get('post/{id}', [CategoryController::class, 'getPostByUser'])->name('profile.index');
 Route::get('post/create', [CategoryController::class, 'create'])->name('post.create');
 Route::get('post/{id}', [CategoryController::class, 'show'])->name('post.show');
 Route::get('post/edit/{id}', [CategoryController::class, 'edit'])->name('post.edit');
