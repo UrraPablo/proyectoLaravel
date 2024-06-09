@@ -4,7 +4,8 @@
 @section('contenido')
 <div class="container mt-4">
     <h2>{{ $category->name }}</h2>
-    <button class="btn btn-primary mb-3 fs-6">Nueva Vibe</button>
+    <!-- Enlace que redirige a la página de creación de posts -->
+    <a href="{{ route('post.create') }}" class="btn btn-primary mb-3 fs-6">Nueva Vibe</a>
 
     <div class="row">
         @foreach($posts as $post)

@@ -3,6 +3,8 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\PostController;
+use App\Models\Post;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,8 +44,12 @@ Route::middleware('auth')->group(function () {
 
 Route::get('category/{id}', [CategoryController::class, 'show'])->name('category.show');
 
-Route::get('post/create', [CategoryController::class, 'create'])->name('post.create');
-Route::get('post/{id}', [CategoryController::class, 'show'])->name('post.show');
-Route::get('post/edit/{id}', [CategoryController::class, 'edit'])->name('post.edit');
-
+Route::middleware('auth')->group(function () {
+    Route::get('post/create', [PostController::class, 'create'])->name('post.create');
+    Route::post('post', [PostController::class, 'store'])->name('post.store');
+    Route::get('post/{id}', [PostController::class, 'show'])->name('post.show');
+    Route::get('post/edit/{id}', [PostController::class, 'edit'])->name('post.edit');
+    Route::put('post/{id}', [PostController::class, 'update'])->name('post.update');
+    Route::delete('post/{id}', [PostController::class, 'destroy'])->name('post.destroy');
+});
 require __DIR__.'/auth.php';
