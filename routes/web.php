@@ -6,6 +6,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
 use App\Models\Post;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -32,6 +33,10 @@ Route::middleware('auth')->group(function () {
 
 Route::get('category/{id}', [CategoryController::class, 'show'])->name('category.show');
 
+Route::get('/category/{category}/post/{post}', [PostController::class, 'showPostInCategory'])->name('category.post.show');
+Route::get('/search', [PostController::class, 'search'])->name('search');
+
+
 Route::middleware('auth')->group(function () {
     Route::get('post/create', [PostController::class, 'create'])->name('post.create');
     Route::post('post', [PostController::class, 'store'])->name('post.store');
@@ -39,7 +44,8 @@ Route::middleware('auth')->group(function () {
     Route::get('post/edit/{id}', [PostController::class, 'edit'])->name('post.edit');
     Route::put('post/{id}', [PostController::class, 'update'])->name('post.update');
     Route::delete('post/{id}', [PostController::class, 'destroy'])->name('post.destroy');
-    Route::get('/category/{category}/post/{post}', [PostController::class, 'showPostInCategory'])->name('category.post.show');
-    Route::get('/search', [PostController::class, 'search'])->name('search');
 });
+
+
+
 require __DIR__.'/auth.php';

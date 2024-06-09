@@ -139,6 +139,7 @@ footer {
 .card-home{
     text-decoration: none;
     transition: transform 0.3s ease;
+    color:#000;
 }
 .card-home:hover {
     transform: translateY(-5px);

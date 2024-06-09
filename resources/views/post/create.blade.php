@@ -1,9 +1,9 @@
 @extends('layout') <!-- hace referencia a la plantilla estandar -->
-@section('title', 'Nueva vibe') <!-- asignacion dinamica del titulo segun la pagina en particular -->
+@section('title', 'VibePoint | Nueva vibe') <!-- asignacion dinamica del titulo segun la pagina en particular -->
 
 @section('contenido')
 <div class="container mt-4">
-    <h1 class="mb-4">Añadir post</h1>
+    <h1 class="mb-4">Nueva Vibe</h1>
     
     <!-- Formulario para crear un nuevo post -->
     <form action="{{ route('post.store') }}" method="POST" enctype="multipart/form-data">
@@ -49,7 +49,7 @@
         </div>
         
         <div class="d-grid">
-            <button type="submit" class="btn btn-primary">Crear Post</button>
+            <button type="submit" class="btn btnlogin">Compartir Vibe</button>
         </div>
     </form>
 </div>
