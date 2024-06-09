@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 @extends('layout') <!-- hace referencia a la plantilla estandar -->
 @section('title','VibePoint') <!-- asignacion dinamica del titulo segun la pagina en particular -->
 
@@ -41,3 +42,15 @@
 </div>
 
 @endsection
+=======
+@extends('layout')
+
+@section('title', 'Post Details')
+
+@section('contenido')
+    <h1>{{ $post->title }}</h1>
+    <p>{{ $post->content }}</p>
+    <p>Categoría: {{ $post->category->name }}</p>
+    <p>Autor: {{ $post->author->name }}</p>
+@endsection
+>>>>>>> 5de4ac1ccadd6cf73f94602877b6bfac195a2874
