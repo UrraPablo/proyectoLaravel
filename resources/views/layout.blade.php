@@ -6,6 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <title>@yield('title')</title> <!-- Contenido variable para cada pagina  -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
@@ -13,30 +14,45 @@
 <body>
     <!-- Header -->
     <header class="text-white p-3 py-2 px-3">
-        
+
         <nav>
             <ul class="nav d-flex justify-content-between align-items-center">
-                <li class="nav-item">
+                <li class="nav-item d-flex justify-content-start">
                     <a href="#" class="nav-link text-white" data-bs-toggle="offcanvas" data-bs-target="#offcanvasCategorias" aria-controls="offcanvasCategorias">Categorías</a>
+                    <form action="{{ route('search') }}" method="GET" class="search-form">
+                        <input class="form-control me-2" type="search" name="query" placeholder="Buscar Vibe" aria-label="Buscar Vibe" required>
+                        <button class="btn" type="submit">
+                            <i class="fas fa-search text-white"></i> <!-- Icono de lupa en blanco -->
+                        </button>
+                    </form>
                 </li>
+              
                 <li><a href="{{route('home')}}">
-                    <img src="{{ asset('images/vibepointlogo.png') }}" alt="VibePoint logo" width="150">
+                        <img src="{{ asset('images/vibepointlogo.png') }}" alt="VibePoint logo" width="150">
                     </a>
                 </li>
                 <li class="nav-item d-flex align-items-center">
                     @auth
+<<<<<<< HEAD
                     <a class="nav-link text-white" href="{{ route('profile.index') }}">Mi Perfil</a>
                     <a class="nav-link text-white"> <form action="{{route('logout')}}" method="post">@csrf<button class="logout" type="submit">Logout</button></form></a>
                         
+=======
+                    <a class="nav-link text-white" href="{{ route('profile.edit') }}">Mi Perfil</a>
+                    <a class="nav-link text-white">
+                        <form action="{{route('logout')}}" method="post">@csrf<button class="logout" type="submit">Cerrar sesión</button></form>
+                    </a>
+
+>>>>>>> aae7b55c016d75115346002bf516bd1a38b97a03
                     @endauth
                     @guest
-                        
-                    <a class="nav-link text-white" href="{{ route('login') }}">Login</a>
-                        <!-- aca va el <a> del login  -->
+
+                    <a class="nav-link text-white" href="{{ route('login') }}">Ingresar</a>
+                    <!-- aca va el <a> del login  -->
                     <a class="nav-link text-white" href="{{ route('register') }}">Registrarse</a>
                     @endguest
-                    
-            </li>
+
+                </li>
             </ul>
         </nav>
     </header>

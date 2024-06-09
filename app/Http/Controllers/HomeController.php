@@ -1,15 +1,16 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use Illuminate\Http\Request;
+use App\Models\Post;
 
 class HomeController extends Controller
 {
-    //Metodo invoke cuando solo hay una ruta 
-    public function __invoke()
+    public function index()
     {
-        return view('home');
-        
+        // Obtener todos los posts
+        $posts = Post::all();
+
+        // Pasar los posts a la vista
+        return view('home', ['posts' => $posts]);
     }
 }

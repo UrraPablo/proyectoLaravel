@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Post;
-use App\Models\User;
+use App\Models\Category;
 use Illuminate\Support\Facades\Validator;
 
 class PostController extends Controller
@@ -16,24 +16,20 @@ class PostController extends Controller
         return view('post.index', ['posts' => $posts]);
     }
 
-    // Método para mostrar los detalles de un post específico
-    public function show($id)
+    public function showPostInCategory($categoryId, $postId)
     {
-        $post = Post::findOrFail($id);
-        return view('post.show', ['post' => $post]);
+        $category = Category::findOrFail($categoryId);
+        $highlightedPost = Post::findOrFail($postId);
+        $posts = $category->posts->where('id', '!=', $postId);
+
+        return view('post.show', compact('category', 'highlightedPost', 'posts'));
     }
 
     // Método para mostrar el formulario de creación de un nuevo post
     public function create()
     {
-        return view('post.create');
-    }
-
-    // Método para editar un post específico
-    public function edit($id)
-    {
-        $post = Post::findOrFail($id);
-        return view('post.edit', ['post' => $post]);
+        $categories = Category::all();
+        return view('post.create', ['categories' => $categories]);
     }
 
     // Método para almacenar un nuevo post
@@ -43,7 +39,7 @@ class PostController extends Controller
         $validator = Validator::make($request->all(), [
             'title' => 'required|string|max:255',
             'content' => 'required|string',
-            // Agrega otras reglas de validación según tus necesidades
+            'category_id' => 'required|exists:categories,id',
         ]);
 
         // Si la validación falla, redirigir de vuelta con los errores
@@ -55,12 +51,20 @@ class PostController extends Controller
         $post = new Post();
         $post->title = $request->input('title');
         $post->content = $request->input('content');
-        // Asignar el autor del post (por ejemplo, el usuario actual)
+        $post->category_id = $request->input('category_id');
         $post->author_id = auth()->user()->id;
         $post->save();
 
-        // Redirigir a alguna vista de confirmación o a la página del nuevo post
-        return redirect()->route('posts.show', ['id' => $post->id]);
+        // Redirigir a la página del nuevo post
+        return redirect()->route('category.post.show', ['category' => $post->category_id ,'post' => $post->id]);
+    }
+
+    // Método para mostrar el formulario de edición de un post específico
+    public function edit($id)
+    {
+        $post = Post::findOrFail($id);
+        $categories = Category::all();
+        return view('post.edit', ['post' => $post, 'categories' => $categories]);
     }
 
     // Método para actualizar un post existente
@@ -73,7 +77,7 @@ class PostController extends Controller
         $validator = Validator::make($request->all(), [
             'title' => 'required|string|max:255',
             'content' => 'required|string',
-            // Agrega otras reglas de validación según tus necesidades
+            'category_id' => 'required|exists:categories,id',
         ]);
 
         // Si la validación falla, redirigir de vuelta con los errores
@@ -84,10 +88,11 @@ class PostController extends Controller
         // Actualizar los datos del post
         $post->title = $request->input('title');
         $post->content = $request->input('content');
+        $post->category_id = $request->input('category_id');
         $post->save();
 
-        // Redirigir a alguna vista de confirmación o a la página del post actualizado
-        return redirect()->route('posts.show', ['id' => $post->id]);
+        // Redirigir a la página del post actualizado
+        return redirect()->route('post.show', ['id' => $post->id]);
     }
 
     // Método para eliminar un post específico
@@ -101,5 +106,15 @@ class PostController extends Controller
 
         // Redirigir a la lista de posts
         return redirect()->route('posts.index');
+    }
+
+    public function search(Request $request)
+    {
+        $query = $request->input('query');
+        $posts = Post::where('title', 'LIKE', "%{$query}%")
+                     ->orWhere('content', 'LIKE', "%{$query}%")
+                     ->get();
+
+        return view('post.search', compact('posts', 'query'));
     }
 }
