@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use Illuminate\Support\Facades\Validator;
+use App\Models\Category;
 
 class PostController extends Controller
 {
@@ -15,11 +16,13 @@ class PostController extends Controller
         return view('post.index', ['posts' => $posts]);
     }
 
-    // Método para mostrar los detalles de un post específico
-    public function show($id)
+    public function showPostInCategory($categoryId, $postId)
     {
-        $post = Post::findOrFail($id);
-        return view('post.show', ['post' => $post]);
+        $category = Category::findOrFail($categoryId);
+        $highlightedPost = Post::findOrFail($postId);
+        $posts = $category->posts->where('id', '!=', $postId);
+
+        return view('post.show', compact('category', 'highlightedPost', 'posts'));
     }
 
     // Método para mostrar el formulario de creación de un nuevo post
@@ -100,5 +103,15 @@ class PostController extends Controller
 
         // Redirigir a la lista de posts
         return redirect()->route('posts.index');
+    }
+
+    public function search(Request $request)
+    {
+        $query = $request->input('query');
+        $posts = Post::where('title', 'LIKE', "%{$query}%")
+                     ->orWhere('content', 'LIKE', "%{$query}%")
+                     ->get();
+
+        return view('post.search', compact('posts', 'query'));
     }
 }
