@@ -1,11 +1,10 @@
-<<<<<<< HEAD
 @extends('layout') <!-- hace referencia a la plantilla estandar -->
 @section('title','VibePoint') <!-- asignacion dinamica del titulo segun la pagina en particular -->
 
 @section('contenido')
 <div class="container mt-4">
     <h2>{{ $category->name }}</h2>
-    <button class="btn btnlogin mb-3">Nueva Vibe</button>
+    <a href="{{ route('post.create') }}" class="btn btnlogin mb-3">Nueva Vibe</a>
     <!-- Post destacado -->
     <div class="highlighted-post mb-4">
         <div class="card card-post card-highlighted">
@@ -42,15 +41,3 @@
 </div>
 
 @endsection
-=======
-@extends('layout')
-
-@section('title', 'Post Details')
-
-@section('contenido')
-    <h1>{{ $post->title }}</h1>
-    <p>{{ $post->content }}</p>
-    <p>Categoría: {{ $post->category->name }}</p>
-    <p>Autor: {{ $post->author->name }}</p>
-@endsection
->>>>>>> 5de4ac1ccadd6cf73f94602877b6bfac195a2874

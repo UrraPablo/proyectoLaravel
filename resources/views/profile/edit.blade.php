@@ -1,9 +1,5 @@
 @extends('layout')
-<<<<<<< HEAD
 @section('title', 'Mi perfil')
-=======
-@section('title','Editar Informacion')
->>>>>>> 5de4ac1ccadd6cf73f94602877b6bfac195a2874
 
 @section('contenido')
 <div class="container mt-5">

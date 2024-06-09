@@ -1,10 +1,5 @@
-<<<<<<< HEAD
 @extends('layout') <!-- hace referencia a la plantilla estandar   -->
 @section('title','Nueva vibe') <!-- asignacion dinamica del titulo segun la pagina en particular -->
-=======
-@extends('layout') <!-- Hace referencia a la plantilla estándar -->
-@section('title', 'Create') <!-- Asignación dinámica del título según la página en particular -->
->>>>>>> 5de4ac1ccadd6cf73f94602877b6bfac195a2874
 
 @section('contenido')
 <div class="container mt-4">

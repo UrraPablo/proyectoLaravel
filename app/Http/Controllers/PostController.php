@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\Category;
 use Illuminate\Support\Facades\Validator;
-use App\Models\Category;
 
 class PostController extends Controller
 {
