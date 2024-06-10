@@ -8,6 +8,7 @@
 
     <div class="row">
         @foreach($posts as $post)
+        <a href="{{ route('category.post.show', ['category' => $post->category->id, 'post' => $post->id]) }}" class="card-home">
         <div class="col-md-12 mb-4">
             <div class="card card-post">
                 <div class="card-header card-post-header">
@@ -23,6 +24,7 @@
                 </div>
             </div>
         </div>
+        </a>
         @endforeach
     </div>
 @endsection

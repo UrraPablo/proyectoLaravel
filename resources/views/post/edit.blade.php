@@ -30,7 +30,7 @@
             <img src="{{ asset('storage/' . $post->imagen) }}" class="img-fluid mt-2" style="max-height: 150px;" alt="Imagen del post">
             @endif
         </div>
-        <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+        <button type="submit" class="btn btnlogin">Guardar Cambios</button>
     </form>
 </div>
 @endsection
