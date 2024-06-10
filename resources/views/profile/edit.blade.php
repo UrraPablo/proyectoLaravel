@@ -3,7 +3,6 @@
 
 @section('contenido')
 
-    <div class="row">
         <!-- Perfil de usuario -->
         <div class="col-md-12">
             <div class="card shadow-lg">
@@ -37,7 +36,7 @@
                             <input type="password" class="form-control" name="password_confirmation" id="password_confirmation">
                         </div>
                         
-                        <div class="d-flex justify-content-end">
+                        <div class="d-flex justify-content-center">
                             <button type="submit" class="btn btnlogin">
                                 {{ __('Actualizar datos') }}
                             </button>
@@ -46,33 +45,5 @@
                 </div>
             </div>
         </div>
-        
-        <!-- Contenedor para los posts -->
-        <div class="col-md-12">
-            <div class="card shadow-lg">
-                <div class="card-header fs-5 headerLogin">
-                    {{ __('Vibes de '.$user->name) }}
-                </div>
-                @foreach ($posts as $post)
-                <a href="{{ route('category.post.show', ['category' => $post->category->id, 'post' => $post->id]) }}" class="card-home">
-                <div class="card card-post card-home">
-                    <div class="card-header card-post-header">
-                        <!-- Fecha de creación -->
-                        <p class="card-date">{{ $post->created_at }}</p>
-                        <span class="card-category position-absolute top-0 end-0 p-1 m-1 fw-bold text-white">{{$post->category->name}}</span>
-                    </div>
-                    <div class="card-body card-post-body">
-                        <!-- Título del post -->
-                        <h5 class="card-title card-post-title">{{ $post->title }}</h5>
-                        <!-- Contenido del post -->
-                        <p class="card-text card-post-text">{{ $post->content }}</p>
-                        <!-- Puedes agregar más detalles del post aquí -->
-                    </div>
-                </a>
-                    
-                @endforeach
-            </div>
-        </div>
-    </div>
 
 @endsection
