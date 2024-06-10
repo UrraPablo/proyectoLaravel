@@ -14,7 +14,7 @@
         </div>
     @else
         @foreach($posts as $post)
-            <div class="col-md-4 mb-4">
+            <div class="col-md-12 mb-4">
                 <a href="{{ route('category.post.show', ['category' => $post->category->id, 'post' => $post->id]) }}" class="card-home">
                     <div class="card card-post card-home">
                         <div class="card-header card-post-header">
