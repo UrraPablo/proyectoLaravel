@@ -16,7 +16,7 @@
                 <h5 class="card-title card-post-title">{{ $highlightedPost->title }}</h5>
                 <!-- Imagen del post destacado -->
                 @if($highlightedPost->imagen)
-                <img src="{{ asset('storage/' . $highlightedPost->imagen) }}" class="img-fluid card-img-top mb-3" alt="Imagen del post">
+                <img src="{{ asset('storage/' . $highlightedPost->imagen) }}" class="img-fluid mb-3" style="max-height: 400px; object-fit: cover;" alt="Imagen del post">
                 @endif
                 <p class="card-text card-post-text">{{ $highlightedPost->content }}</p>
             </div>

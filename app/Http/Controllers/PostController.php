@@ -104,7 +104,7 @@ class PostController extends Controller
 
         $post->save();
 
-        return redirect()->route('category.post.show', ['category' => $post->category_id, 'post' => $post->id]);
+        return redirect()->route('profile.index');
     }
 
     // Eliminar un post específico
@@ -117,7 +117,7 @@ class PostController extends Controller
         $post->delete();
 
         // Redirigir a la lista de posts
-        return redirect()->route('posts.index');
+        return redirect()->route('profile.index');
     }
 
     // Buscar posts
