@@ -51,7 +51,7 @@
     </header>
 
 
-    <main class="container mt-4">
+    <main class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
                 @yield('contenido')

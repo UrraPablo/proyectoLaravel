@@ -1,7 +1,9 @@
 
 
 @import 'bootstrap/dist/css/bootstrap.min.css';
-
+main{
+    margin-top:80px;
+}
 body {
     font-family: Arial, sans-serif; /* Cambia "Arial" por la fuente que desees utilizar */
     margin-bottom: 80px;
@@ -9,6 +11,10 @@ body {
 
 header {
     background-color: #4B0082; /* Color púrpura */
+    position:fixed;
+    z-index:3;
+    top:0;
+    width:100%
 }
 
 footer {
